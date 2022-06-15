@@ -1,4 +1,5 @@
-# ABCD docker (Ver: 251)
+# ABCD docker (Ver: 254)
+
 ## Overview
 The Multi-Modal Processing Stream (MMPS) is a software package that consists of binaries, scripts, and
 matlab functions, designed collectively to process data from non-invasive brain imaging methods. These
@@ -188,3 +189,22 @@ execute it.
 Finally, let’s execute the run_abcd_docker.sh script and sit back. It may run for hours (or even longer)
 depending on the processing steps you choose and the size of the dataset. Don’t forget to put on your power
 adapter if you are running on laptop.
+
+## Building this container
+
+In order to build this container some files not shared on this repository are required. These files are:
+
+- MMPS_254.tar (an archive of the /usr/pubsw/packages/MMPS/MMPS_254 folder from San Diego)
+- atlases.2020.10.14.tar (an archive of the /usr/pubsw/packages/MMPS/atlases/atlases.2020.10.14 folder from San Diego)
+
+These files are referenced on the Dockerfile and are expected to be in the local directory. The image can be build with:
+
+```{bash}
+docker build --no-cache -t mmps_docker .
+```
+
+and run (for testing) with:
+
+```{bash}
+docker run --rm -it --entrypoint /bin/bash mmps_docker:latest
+```
