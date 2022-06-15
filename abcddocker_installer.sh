@@ -17,26 +17,28 @@ mkdir -p /data
 mkdir -p /oasis
 mkdir -p /projects
 
+debian="bullseye"
+
 echo "**********************************************"
 echo "*Installing prerequisites                    *"
 echo "**********************************************"
 apt-get -qq update >/dev/null 2>&1
 apt-get install -qq --no-install-recommends --allow-unauthenticated apt-utils >/dev/null 2>&1
-apt-get -qq --allow-unauthenticated install tar aria2 libgomp1 graphicsmagick-libmagick-dev-compat libxt-dev libxrandr2 libxcursor-dev libxinerama-dev libxft-dev libxmu-dev libxi-dev libglu1-mesa bc bzip2 dc file libsm6 tcsh unzip libx11-6 libxext6 libgomp1 libexpat1 libgl1-mesa-glx libxt6 jq curl libstdc++6 binutils lrzip dcmtk python python3 python3-pip pigz >/dev/null
+apt-get -qq --allow-unauthenticated install tar aria2 libgomp1 graphicsmagick-libmagick-dev-compat libmotif-dev libxpm-dev libglu1-mesa-dev libglw1-mesa-dev libgsl-dev libxt-dev libxrandr2 libxcursor-dev libxinerama-dev libxft-dev libxmu-dev libxi-dev libglu1-mesa bc bzip2 dc file libsm6 tcsh unzip libx11-6 libxext6 libgomp1 libexpat1 libgl1-mesa-glx libxt6 jq curl libstdc++6 binutils lrzip dcmtk python2 python3 python3-pip pigz >/dev/null
 pip3 -q --no-cache-dir install pydicom dicom pandas matplotlib scipy
-echo "deb http://archive.debian.org/debian-archive/debian jessie main contrib non-free" > /etc/apt/sources.list
-echo "deb http://deb.debian.org/debian stretch main contrib non-free" >> /etc/apt/sources.list
-echo "deb-src http://deb.debian.org/debian stretch main contrib non-free" >> /etc/apt/sources.list
-echo "deb http://deb.debian.org/debian-security/ stretch/updates main contrib non-free" >> /etc/apt/sources.list
-echo "deb-src http://deb.debian.org/debian-security/ stretch/updates main contrib non-free" >> /etc/apt/sources.list
-echo "deb http://deb.debian.org/debian stretch-updates main contrib non-free" >> /etc/apt/sources.list
-echo "deb-src http://deb.debian.org/debian stretch-updates main contrib non-free" >> /etc/apt/sources.list
-echo "deb http://deb.debian.org/debian stretch-backports main contrib non-free" >> /etc/apt/sources.list
-echo "deb-src http://deb.debian.org/debian stretch-backports main contrib non-free" >> /etc/apt/sources.list
-echo "deb http://security.debian.org/debian-security jessie/updates main" >> /etc/apt/sources.list
+#echo "deb http://archive.debian.org/debian-archive/debian jessie main contrib non-free" > /etc/apt/sources.list
+echo "deb http://deb.debian.org/debian $debian main contrib non-free" >> /etc/apt/sources.list
+echo "deb-src http://deb.debian.org/debian $debian main contrib non-free" >> /etc/apt/sources.list
+echo "deb http://deb.debian.org/debian-security/ $debian/updates main contrib non-free" >> /etc/apt/sources.list
+echo "deb-src http://deb.debian.org/debian-security/ $debian/updates main contrib non-free" >> /etc/apt/sources.list
+echo "deb http://deb.debian.org/debian $debian-updates main contrib non-free" >> /etc/apt/sources.list
+echo "deb-src http://deb.debian.org/debian $debian-updates main contrib non-free" >> /etc/apt/sources.list
+echo "deb http://deb.debian.org/debian $debian-backports main contrib non-free" >> /etc/apt/sources.list
+echo "deb-src http://deb.debian.org/debian $debian-backports main contrib non-free" >> /etc/apt/sources.list
+#echo "deb http://security.debian.org/debian-security jessie/updates main" >> /etc/apt/sources.list
 apt-get -qq update >/dev/null
-apt-get -qq --allow-unauthenticated install libxp6 libxpm4 libpng12-0 >/dev/null
-apt-get -qq install --allow-unauthenticated git build-essential cmake pkg-config >/dev/null
+apt-get -qq --allow-unauthenticated install libxpm4 libpng16-16 >/dev/null
+apt-get -qq install --allow-unauthenticated git build-essential cmake git pkg-config >/dev/null
 aria2c -q -d /tmp -o libg2c0_3.4.6-8ubuntu2_amd64.deb http://old-releases.ubuntu.com/ubuntu/pool/universe/g/gcc-3.4/libg2c0_3.4.6-8ubuntu2_amd64.deb
 dpkg -x /tmp/libg2c0_3.4.6-8ubuntu2_amd64.deb /tmp/
 mv /tmp/usr/lib/libg2c* /usr/lib/
@@ -50,22 +52,24 @@ mkdir -p /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/bin
 
 date
 echo "**********************************************"
-echo "*Installing Freesurfer centos4_x86_64-v5.3.0 *"
+echo "*Installing Freesurfer centos8_x86_64-v7.1.1 *"
 echo "**********************************************"
-aria2c -q -x 10 -s 10 -d /tmp -o freesurfer-Linux-centos4_x86_64-stable-pub-v5.3.0.tar.gz ftp://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/5.3.0/freesurfer-Linux-centos4_x86_64-stable-pub-v5.3.0.tar.gz
-tar -xf /tmp/freesurfer-Linux-centos4_x86_64-stable-pub-v5.3.0.tar.gz -C /usr/pubsw/packages/freesurfer/
-mv /usr/pubsw/packages/freesurfer/freesurfer /usr/pubsw/packages/freesurfer/RH4-x86_64-R530
+aria2c -q -x 10 -s 10 -d /tmp -o freesurfer-linux-centos8_x86_64-7.1.1.tar.gz ftp://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/7.1.1/freesurfer-linux-centos8_x86_64-7.1.1.tar.gz
+tar -xf /tmp/freesurfer-linux-centos8_x86_64-7.1.1.tar.gz -C /usr/pubsw/packages/freesurfer/
+mv /usr/pubsw/packages/freesurfer/freesurfer /usr/pubsw/packages/freesurfer/RH8-x86_64-R711
 
 date
 echo "**********************************************"
-echo "*Installing FSL  5.0.2.2-centos6_64          *"
+echo "*Installing FSL  6.0.5.2-centos7_64          *"
 echo "**********************************************"
-for ((i=0;i<=13;i++))
-do
-  aria2c -q -x 10 -s 10 -d /tmp/fsl -o fsl-5.0.2.2-centos6_64.tgz`padzero $i` https://github.com/xfgavin/abcd_docker_mmps/raw/master/packages/fsl-5.0.2.2-centos6_64.tgz`padzero $i`
-done
-cat /tmp/fsl/fsl-5.0.2.2-centos6_64.tgz* >/tmp/fsl/fsl-5.0.2.2-centos6_64.tgz
-tar xf /tmp/fsl/fsl-5.0.2.2-centos6_64.tgz -C /usr/pubsw/packages/fsl/
+/usr/bin/python2.7 /tmp/fslinstaller.py -q -B 6.0.5.2 -d /usr/pubsw/packages/fsl/
+
+#for ((i=0;i<=13;i++))
+#do
+#  aria2c -q -x 10 -s 10 -d /tmp/fsl -o fsl-5.0.2.2-centos6_64.tgz`padzero $i` https://github.com/xfgavin/abcd_docker_mmps/raw/master/packages/fsl-5.0.2.2-centos6_64.tgz`padzero $i`
+#done
+#cat /tmp/fsl/fsl-5.0.2.2-centos6_64.tgz* >/tmp/fsl/fsl-5.0.2.2-centos6_64.tgz
+#tar xf /tmp/fsl/fsl-5.0.2.2-centos6_64.tgz -C /usr/pubsw/packages/fsl/
 #date
 #echo "**********************************************"
 #echo "*Installing FSL 5.0.6-centos6_64             *"
@@ -86,58 +90,63 @@ date
 echo "**********************************************"
 echo "*Installing AFNI 2010_10_19_1028             *"
 echo "**********************************************"
-for ((i=0;i<=3;i++))
-do
-  aria2c -q -x 10 -s 10 -d /tmp/afni -o AFNI_2010_10_19_1028.tgz0$i https://github.com/xfgavin/abcd_docker_mmps/raw/master/packages/AFNI_2010_10_19_1028.tgz0$i
-done
-cat /tmp/afni/AFNI_2010_10_19_1028.tgz00 /tmp/afni/AFNI_2010_10_19_1028.tgz01 /tmp/afni/AFNI_2010_10_19_1028.tgz02 /tmp/afni/AFNI_2010_10_19_1028.tgz03 > /tmp/afni/AFNI_2010_10_19_1028.tgz
-tar xf /tmp/afni/AFNI_2010_10_19_1028.tgz -C /usr/pubsw/packages/afni/AFNI_2010_10_19_1028
+cd /tmp/
+curl -O https://afni.nimh.nih.gov/pub/dist/tgz/linux_ubuntu_16_64.tgz
+tar zxfv /tmp/linux_ubuntu_16_64.tgz 
+mv /tmp/linux_ubuntu_16_64/* /usr/pubsw/packages/afni/AFNI_2010_10_19_1028/
+
+#for ((i=0;i<=3;i++))
+#do
+#  aria2c -q -x 10 -s 10 -d /tmp/afni -o AFNI_2010_10_19_1028.tgz0$i https://github.com/xfgavin/abcd_docker_mmps/raw/master/packages/AFNI_2010_10_19_1028.tgz0$i
+#done
+#cat /tmp/afni/AFNI_2010_10_19_1028.tgz00 /tmp/afni/AFNI_2010_10_19_1028.tgz01 /tmp/afni/AFNI_2010_10_19_1028.tgz02 /tmp/afni/AFNI_2010_10_19_1028.tgz03 > /tmp/afni/AFNI_2010_10_19_1028.tgz
+#tar xf /tmp/afni/AFNI_2010_10_19_1028.tgz -C /usr/pubsw/packages/afni/AFNI_2010_10_19_1028
 
 date
 echo "**********************************************"
-echo "*Installing MMPS 251                         *"
+echo "*Installing MMPS 254                         *"
 echo "**********************************************"
-for ((i=0;i<=28;i++))
-do
-  aria2c -q -x 10 -s 10 -d /tmp/mmps_perpheral_mmps -o mmps_perpheral_mmps.tgz.lrz`padzero $i` https://github.com/xfgavin/abcd_docker_mmps/raw/master/packages/mmps_perpheral/mmps_perpheral_mmps.tgz.lrz`padzero $i`
-done
-cat /tmp/mmps_perpheral_mmps/mmps_perpheral_mmps.tgz.lrz* > /tmp/mmps_perpheral_mmps/mmps_perpheral_mmps.tgz.lrz
-lrzip -d -q -O /tmp/mmps_perpheral_mmps/ /tmp/mmps_perpheral_mmps/mmps_perpheral_mmps.tgz.lrz
-tar xf /tmp/mmps_perpheral_mmps/mmps_perpheral_mmps.tgz -C /usr/pubsw/packages
+#for ((i=0;i<=28;i++))
+#do
+#  aria2c -q -x 10 -s 10 -d /tmp/mmps_perpheral_mmps -o mmps_perpheral_mmps.tgz.lrz`padzero $i` https://github.com/xfgavin/abcd_docker_mmps/raw/master/packages/mmps_perpheral/mmps_perpheral_mmps.tgz.lrz`padzero $i`
+#done
+#cat /tmp/mmps_perpheral_mmps/mmps_perpheral_mmps.tgz.lrz* > /tmp/mmps_perpheral_mmps/mmps_perpheral_mmps.tgz.lrz
+#lrzip -d -q -O /tmp/mmps_perpheral_mmps/ /tmp/mmps_perpheral_mmps/mmps_perpheral_mmps.tgz.lrz
+#tar xf /tmp/mmps_perpheral_mmps/mmps_perpheral_mmps.tgz -C /usr/pubsw/packages
+#
+#for ((i=0;i<=10;i++))
+#do
+#  aria2c -q -x 10 -s 10 -d /tmp/mmps_engine -o mmps_engine.lrz`padzero $i` https://github.com/xfgavin/abcd_docker_mmps/raw/master/mmps_engine/mmps_engine.lrz`padzero $i`
+#done
+#cat /tmp/mmps_engine/mmps_engine.lrz* > /tmp/mmps_engine/mmps_engine.lrz
+#lrzip -d -q -O /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/bin/ /tmp/mmps_engine/mmps_engine.lrz
+#chmod +x /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/bin/mmps_engine
 
-for ((i=0;i<=10;i++))
-do
-  aria2c -q -x 10 -s 10 -d /tmp/mmps_engine -o mmps_engine.lrz`padzero $i` https://github.com/xfgavin/abcd_docker_mmps/raw/master/mmps_engine/mmps_engine.lrz`padzero $i`
-done
-cat /tmp/mmps_engine/mmps_engine.lrz* > /tmp/mmps_engine/mmps_engine.lrz
-lrzip -d -q -O /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/bin/ /tmp/mmps_engine/mmps_engine.lrz
-chmod +x /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/bin/mmps_engine
+#for ((i=0;i<=1;i++))
+#do
+#  aria2c -q -x 10 -s 10 -d /tmp/mmps -o mmps_$MMPSVER.tgz`padzero $i` https://github.com/xfgavin/abcd_docker_mmps/raw/master/mmps/mmps_$MMPSVER.tgz`padzero $i`
+#done
+#cat /tmp/mmps/mmps_$MMPSVER.tgz* > /tmp/mmps/mmps_$MMPSVER.tgz
+#tar xf /tmp/mmps/mmps_$MMPSVER.tgz -C /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/
 
-for ((i=0;i<=1;i++))
-do
-  aria2c -q -x 10 -s 10 -d /tmp/mmps -o mmps_$MMPSVER.tgz`padzero $i` https://github.com/xfgavin/abcd_docker_mmps/raw/master/mmps/mmps_$MMPSVER.tgz`padzero $i`
-done
-cat /tmp/mmps/mmps_$MMPSVER.tgz* > /tmp/mmps/mmps_$MMPSVER.tgz
-tar xf /tmp/mmps/mmps_$MMPSVER.tgz -C /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/
+#aria2c -q -x 10 -s 10 -d /tmp -o mmps_perpheral_other.tgz https://github.com/xfgavin/abcd_docker_mmps/raw/master/packages/mmps_perpheral/mmps_perpheral_other.tgz
+#tar xf /tmp/mmps_perpheral_other.tgz -C /usr/pubsw/packages/
 
-aria2c -q -x 10 -s 10 -d /tmp -o mmps_perpheral_other.tgz https://github.com/xfgavin/abcd_docker_mmps/raw/master/packages/mmps_perpheral/mmps_perpheral_other.tgz
-tar xf /tmp/mmps_perpheral_other.tgz -C /usr/pubsw/packages/
+#aria2c -q -x 1 -s 1 -d /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/sh -o abcd_init.sh https://raw.githubusercontent.com/xfgavin/abcd_docker_mmps/master/scripts/abcd_init.sh
+#aria2c -q -x 1 -s 1 -d /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/sh -o mmps_fsurf.sh https://raw.githubusercontent.com/xfgavin/abcd_docker_mmps/master/scripts/mmps_fsurf.sh
 
-aria2c -q -x 1 -s 1 -d /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/sh -o abcd_init.sh https://raw.githubusercontent.com/xfgavin/abcd_docker_mmps/master/scripts/abcd_init.sh
-aria2c -q -x 1 -s 1 -d /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/sh -o mmps_fsurf.sh https://raw.githubusercontent.com/xfgavin/abcd_docker_mmps/master/scripts/mmps_fsurf.sh
-
-rm -f /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/sh/run_all_MMPS.sh
-aria2c -q -x 1 -s 1 -d /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/sh -o run_all_MMPS.sh https://raw.githubusercontent.com/xfgavin/abcd_docker_mmps/master/scripts/run_all_MMPS.sh
-rm -f /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/sh/getValue.sh
-aria2c -q -x 1 -s 1 -d /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/sh -o getValue.sh https://raw.githubusercontent.com/xfgavin/abcd_docker_mmps/master/scripts/getValue.sh
-aria2c -q -x 1 -s 1 -d /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/sh -o run_mmps_engine.sh https://raw.githubusercontent.com/xfgavin/abcd_docker_mmps/master/scripts/run_mmps_engine.sh
-chmod +x /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/sh/*.sh
+#rm -f /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/sh/run_all_MMPS.sh
+#aria2c -q -x 1 -s 1 -d /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/sh -o run_all_MMPS.sh https://raw.githubusercontent.com/xfgavin/abcd_docker_mmps/master/scripts/run_all_MMPS.sh
+#rm -f /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/sh/getValue.sh
+#aria2c -q -x 1 -s 1 -d /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/sh -o getValue.sh https://raw.githubusercontent.com/xfgavin/abcd_docker_mmps/master/scripts/getValue.sh
+#aria2c -q -x 1 -s 1 -d /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/sh -o run_mmps_engine.sh https://raw.githubusercontent.com/xfgavin/abcd_docker_mmps/master/scripts/run_mmps_engine.sh
+#chmod +x /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/sh/*.sh
 
 ln -s /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/bin/mmps_engine /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/sh/
 
-aria2c -q -x 1 -s 1 -d /tmp -o mmps_setupscripts.tgz https://raw.githubusercontent.com/xfgavin/abcd_docker_mmps/master/mmps/mmps_setupscripts.tgz
-tar xf /tmp/mmps_setupscripts.tgz -C /usr/pubsw
-chmod +x /usr/pubsw/bin/*
+#aria2c -q -x 1 -s 1 -d /tmp -o mmps_setupscripts.tgz https://raw.githubusercontent.com/xfgavin/abcd_docker_mmps/master/mmps/mmps_setupscripts.tgz
+#tar xf /tmp/mmps_setupscripts.tgz -C /usr/pubsw
+#chmod +x /usr/pubsw/bin/*
 
 aria2c -q -x 10 -s 10 -d /tmp/ -o dtitk-2.3.1-Linux-x86_64.tar.gz https://github.com/xfgavin/abcd_docker_mmps/raw/master/packages/dtitk-2.3.1-Linux-x86_64.tar.gz
 tar xf /tmp/dtitk-2.3.1-Linux-x86_64.tar.gz -C /usr/pubsw/packages/dtitk

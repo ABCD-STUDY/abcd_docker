@@ -12,7 +12,7 @@
 # RawDataRoot, /path/to/fast_track_tgz
 ############################################################################################
 ProjID=DAL_ABCD
-FSLic=/usr/pubsw/packages/freesurfer/RH4-x86_64-R530/.license
+FSLic=/usr/pubsw/packages/freesurfer/RH6-x86_64-R711/.license
 HomeRoot=/space/syn09/1/data/MMILDB/xfgavin/docker/abcd_docker/mmps_home
 ############################################################################################
 
