@@ -17,6 +17,9 @@ COPY fslinstaller.py /tmp
 COPY MMPS_254.tar /tmp
 RUN mkdir -p /usr/pubsw/packages/MMPS && cd /usr/pubsw/packages/MMPS && tar -xvf /tmp/MMPS_254.tar
 
+COPY R2014b_installed.tar /tmp
+RUN mkdir -p /usr/pubsw/packages/matlab && cd /usr/pubsw/packages/matlab/ && tar -xvf /tmp/R2014b_installed.tar
+
 COPY atlases.2020.10.14.tar /tmp
 RUN mkdir -p /usr/pubsw/packages/MMPS/atlases && cd /usr/pubsw/packages/MMPS/atlases && tar -xvf /tmp/atlases.2020.10.14.tar
 
