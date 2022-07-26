@@ -25,6 +25,8 @@ echo "**********************************************"
 apt-get -qq update >/dev/null 2>&1
 apt-get install -qq --no-install-recommends --allow-unauthenticated apt-utils >/dev/null 2>&1
 apt-get -qq --allow-unauthenticated install tar aria2 libgomp1 graphicsmagick-libmagick-dev-compat libmotif-dev libxpm-dev libglu1-mesa-dev libglw1-mesa-dev libgsl-dev libxt-dev libxrandr2 libxcursor-dev libxinerama-dev libxft-dev libxmu-dev libxi-dev libglu1-mesa bc bzip2 dc file libsm6 tcsh unzip libx11-6 libxext6 libgomp1 libexpat1 libgl1-mesa-glx libxt6 jq curl libstdc++6 binutils lrzip dcmtk python2 python3 python3-pip pigz >/dev/null
+# Just during development we would need these... 
+apt-get -qq install nano vim
 pip3 -q --no-cache-dir install pydicom dicom pandas matplotlib scipy
 #echo "deb http://archive.debian.org/debian-archive/debian jessie main contrib non-free" > /etc/apt/sources.list
 echo "deb http://deb.debian.org/debian $debian main contrib non-free" >> /etc/apt/sources.list
@@ -50,6 +52,12 @@ mkdir -p /usr/pubsw/packages/mcr
 mkdir -p /usr/pubsw/packages/dtitk
 mkdir -p /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/bin
 
+echo "**********************************************"
+echo " Create an MMPS user account with tcsh        "
+echo "**********************************************"
+useradd -s /usr/bin/tcsh -d /home/MMPS MMPS
+
+
 date
 echo "**********************************************"
 echo "*Installing Freesurfer centos8_x86_64-v7.1.1 *"
@@ -62,7 +70,7 @@ date
 echo "**********************************************"
 echo "*Installing FSL  6.0.5.2-centos7_64          *"
 echo "**********************************************"
-/usr/bin/python2.7 /tmp/fslinstaller.py -q -B 6.0.5.2 -d /usr/pubsw/packages/fsl/
+/usr/bin/python2.7 /tmp/fslinstaller.py -q -B 6.0.5.2 -d /usr/pubsw/packages/fsl/fsl-6.0.5.2-ubuntu
 
 #for ((i=0;i<=13;i++))
 #do
@@ -165,6 +173,7 @@ sed -e "s/opts->isFlipY = true/opts->isFlipY = false/g" -i ../console/nii_dicom_
 cmake .. >/dev/null
 make >/dev/null
 mv bin/dcm2niix /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/bin/dcm2niix_noflipY
+rm /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/bin/dcm2niix
 ln -s dcm2niix_noflipY /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/bin/dcm2niix
 )
 
