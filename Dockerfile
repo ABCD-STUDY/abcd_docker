@@ -3,8 +3,10 @@
 # Note: The resulting container is ~22GB. 
 # 
 # Example build:
-#   docker build --no-cache -t abcd:254 .
+#   docker build --no-cache -t abcd:254 -f Dockerfile .
 #
+# In order to install matlab correctly we need a license file and a file installation key
+#   docker build --no-cache --build-arg fileInstallationKey=12345  -t abcd:254 -f Dockerfile .
 
 # Start with debian
 FROM debian:bullseye-slim
@@ -12,20 +14,29 @@ MAINTAINER Feng Xue <xfgavin@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
 
+# specify a matlab file installation key (install without network)
+#   --build-arg fileInstallationKey=12345-12323-.....
+ARG fileInstallationKey
+
 ADD abcddocker_installer.sh /tmp
 COPY fslinstaller.py /tmp
 COPY MMPS_254.tar /tmp
 RUN mkdir -p /usr/pubsw/packages/MMPS && cd /usr/pubsw/packages/MMPS && tar -xvf /tmp/MMPS_254.tar
 
-
-COPY R2014b_installed.tar /tmp
-RUN mkdir -p /usr/pubsw/packages/matlab \
-    && cd /usr/pubsw/packages/matlab/ \
-    && tar -xvf /tmp/R2014b_installed.tar \
-    && rm -rf /usr/pubsw/packages/matlab/R2014b/licenses/network.lic
-
+# Install matlab inside the container
+RUN mkdir -p /usr/pubsw/packages/matlab
 COPY network.lic /usr/pubsw/packages/matlab/
-RUN ln -s /usr/pubsw/packages/matlab/network.lic /usr/pubsw/packages/matlab/R2014b/licenses/network.lic
+COPY R2021b/2022_07_27_11_14_55/ /tmp/R2021b
+RUN cd /usr/pubsw/packages/matlab/ \
+    && cp /tmp/R2021b/installer_input.txt /tmp/ \
+    && sed -i -r 's+# destinationFolder=+destinationFolder=/usr/pubsw/packages/matlab/R2021b/+' /tmp/installer_input.txt \
+    && sed -i -r 's+# fileInstallationKey=+fileInstallationKey=${fileInstallationKey}+' /tmp/installer_input.txt \
+    && sed -i -r 's+# agreeToLicense=+agreeToLicense=yes+' /tmp/installer_input.txt \
+    && sed -i -r 's+# licensePath=+licensePath=/usr/pubsw/packages/matlab/network.lic+' /tmp/installer_input.txt \
+    && cd /tmp/R2021b \
+    && ./install -inputFile /tmp/installer_input.txt
+
+# RUN ln -s /usr/pubsw/packages/matlab/network.lic /usr/pubsw/packages/matlab/R2021b/licenses/network.lic
 
 COPY atlases.2020.10.14.tar /tmp
 RUN mkdir -p /usr/pubsw/packages/MMPS/atlases \
