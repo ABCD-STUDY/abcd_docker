@@ -23,38 +23,49 @@ COPY fslinstaller.py /tmp
 COPY MMPS_254.tar /tmp
 RUN mkdir -p /usr/pubsw/packages/MMPS && cd /usr/pubsw/packages/MMPS && tar -xvf /tmp/MMPS_254.tar
 
+RUN /tmp/abcddocker_installer.sh 254
+
 # Install matlab inside the container
 RUN mkdir -p /usr/pubsw/packages/matlab
 COPY network.lic /usr/pubsw/packages/matlab/
-COPY R2021b/2022_07_27_11_14_55/ /tmp/R2021b
-RUN cd /usr/pubsw/packages/matlab/ \
-    && cp /tmp/R2021b/installer_input.txt /tmp/ \
+COPY R2021b_install_folder.tar /tmp
+RUN cd /tmp/ && tar xvf R2021b_install_folder.tar \
+    && cd /usr/pubsw/packages/matlab/ \
+    && cp /tmp/R2021b/2022_07_27_11_14_55/installer_input.txt /tmp/ \
     && sed -i -r 's+# destinationFolder=+destinationFolder=/usr/pubsw/packages/matlab/R2021b/+' /tmp/installer_input.txt \
-    && sed -i -r 's+# fileInstallationKey=+fileInstallationKey=${fileInstallationKey}+' /tmp/installer_input.txt \
+    && sed -i -r "s+# fileInstallationKey=+fileInstallationKey=${fileInstallationKey}+" /tmp/installer_input.txt \
     && sed -i -r 's+# agreeToLicense=+agreeToLicense=yes+' /tmp/installer_input.txt \
     && sed -i -r 's+# licensePath=+licensePath=/usr/pubsw/packages/matlab/network.lic+' /tmp/installer_input.txt \
-    && cd /tmp/R2021b \
-    && ./install -inputFile /tmp/installer_input.txt
+    && cd /tmp/R2021b/2022_07_27_11_14_55 \
+    && ./install -inputFile /tmp/installer_input.txt \
+    && rm -rf /tmp/R2021b \
+    && rm rf /tmp/R2021b_install_folder.tar \
+    && rm rf installer_input.txt
+#Clean up after matlab install
 
-# RUN ln -s /usr/pubsw/packages/matlab/network.lic /usr/pubsw/packages/matlab/R2021b/licenses/network.lic
+#RUN ln -s /usr/pubsw/packages/matlab/network.lic /usr/pubsw/packages/matlab/R2021b/licenses/network.lic
 
 COPY atlases.2020.10.14.tar /tmp
 RUN mkdir -p /usr/pubsw/packages/MMPS/atlases \
     && cd /usr/pubsw/packages/MMPS/atlases \
-    && tar -xvf /tmp/atlases.2020.10.14.tar
+    && tar -xvf /tmp/atlases.2020.10.14.tar \
+    && rm rf /tmp/atlases.2020.10.14.tar
 
-#RUN apt update && apt-get install -qq tcsh
-RUN /tmp/abcddocker_installer.sh 254
+
+
 
 COPY usr_pubsw_bin.zip /tmp
 RUN cd /usr/pubsw \
-    && unzip /tmp/usr_pubsw_bin
+    && unzip /tmp/usr_pubsw_bin \
+    && rm rf /tmp/usr_pubsw_bin.zip
 
 # replace some of the bin files with our copies
 #COPY pubsw_bin/SetUpFreeSurfer.csh /usr/pubsw/bin/
 
 COPY mmps_home.tar.gz /tmp
-RUN cd /tmp/ && gunzip mmps_home.tar.gz && tar xvf /tmp/mmps_home.tar \
+RUN cd /tmp/ \
+    && gunzip mmps_home.tar.gz \
+    && tar xvf /tmp/mmps_home.tar \
     && mkdir -p /home/MMPS \
     && cd /home/MMPS \
     && mv /tmp/mmps_home/* . \

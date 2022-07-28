@@ -86,13 +86,14 @@ echo "**********************************************"
 #tar -xf /tmp/fsl-5.0.6-centos6_64.tar.gz -C /usr/pubsw/packages/fsl/
 #mv /usr/pubsw/packages/fsl/fsl /usr/pubsw/packages/fsl/fsl-5.0.6-centos6_64
 
-date
-echo "**********************************************"
-echo "*Installing MATLAB run time v84 (R2014b)     *"
-echo "**********************************************"
-aria2c -q -x 10 -s 10 -d /tmp/mcr -o mcr.zip http://ssd.mathworks.com/supportfiles/downloads/R2014b/deployment_files/R2014b/installers/glnxa64/MCR_R2014b_glnxa64_installer.zip
-unzip -qq /tmp/mcr/mcr.zip -d /tmp/mcr
-/tmp/mcr/install -destinationFolder /usr/pubsw/packages/mcr/v84 -agreeToLicense yes -mode silent >/dev/null
+#already have matlab 2021
+#date
+#echo "**********************************************"
+#echo "*Installing MATLAB run time v84 (R2014b)     *"
+#echo "**********************************************"
+#aria2c -q -x 10 -s 10 -d /tmp/mcr -o mcr.zip http://ssd.mathworks.com/supportfiles/downloads/R2014b/deployment_files/R2014b/installers/glnxa64/MCR_R2014b_glnxa64_installer.zip
+#unzip -qq /tmp/mcr/mcr.zip -d /tmp/mcr
+#/tmp/mcr/install -destinationFolder /usr/pubsw/packages/mcr/v84 -agreeToLicense yes -mode silent >/dev/null
 
 date
 echo "**********************************************"
