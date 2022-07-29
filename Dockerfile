@@ -39,8 +39,8 @@ RUN cd /tmp/ && tar xvf R2021b_install_folder.tar \
     && cd /tmp/R2021b/2022_07_27_11_14_55 \
     && ./install -inputFile /tmp/installer_input.txt \
     && rm -rf /tmp/R2021b \
-    && rm rf /tmp/R2021b_install_folder.tar \
-    && rm rf installer_input.txt
+    && rm -rf /tmp/R2021b_install_folder.tar \
+    && rm -rf /tmp/installer_input.txt
 #Clean up after matlab install
 
 #RUN ln -s /usr/pubsw/packages/matlab/network.lic /usr/pubsw/packages/matlab/R2021b/licenses/network.lic
@@ -49,15 +49,16 @@ COPY atlases.2020.10.14.tar /tmp
 RUN mkdir -p /usr/pubsw/packages/MMPS/atlases \
     && cd /usr/pubsw/packages/MMPS/atlases \
     && tar -xvf /tmp/atlases.2020.10.14.tar \
-    && rm rf /tmp/atlases.2020.10.14.tar
+    && rm -rf /tmp/atlases.2020.10.14.tar
 
 
 
+#RUN apt update && apt-get install -qq tcsh
 
 COPY usr_pubsw_bin.zip /tmp
 RUN cd /usr/pubsw \
     && unzip /tmp/usr_pubsw_bin \
-    && rm rf /tmp/usr_pubsw_bin.zip
+    && rm -rf /tmp/usr_pubsw_bin.zip
 
 # replace some of the bin files with our copies
 #COPY pubsw_bin/SetUpFreeSurfer.csh /usr/pubsw/bin/
