@@ -9,7 +9,7 @@
 
 ### Setup the FREESURFER version to run.
 set cpu=`uname -m`
-set release=`cat /etc/redhat-release`
+#set release=`cat /etc/redhat-release`
 
 setenv TCL_LIBRARY /usr/lib
 setenv TK_LIBRARY /usr/lib
@@ -29,7 +29,7 @@ else
 endif
 
 if ($cpu == "x86_64") then
-  setenv FREESURFER_HOME ${PUBSW}/packages/freesurfer/RH4-x86_64-R${FREESURFER_VER}
+  setenv FREESURFER_HOME ${PUBSW}/packages/freesurfer/RH8-x86_64-R${FREESURFER_VER}
 else  
   setenv FREESURFER_HOME ${PUBSW}/packages/freesurfer/RH4-x86_32-R${FREESURFER_VER}
 endif
@@ -39,6 +39,10 @@ set addpathlist=($FREESURFER_HOME/bin)
 ############################################################################
 ### Source the appropriate FreeSurferEnv*.csh file based on $FREESURFER_VER
 switch ($FREESURFER_VER)
+  case [7][0-9][0-9]:
+    source ${FREESURFER_HOME}/FreeSurferEnv.csh
+    breaksw
+
   case [6][0-9][0-9]:
     source ${PUBSH}/bin/FreeSurferEnv_6.csh
     breaksw
@@ -68,7 +72,7 @@ alias sete   'setenv SUBJECTS_DIR ${PWD}'
 alias tkwm   'tkmedit \!:1 wm.mgz lh.white -aux T1.mgz -aux-surface rh.white'
 
 switch ($FREESURFER_VER)
-  case [4-6][0-9][0-9]:
+  case [4-7][0-9][0-9]:
     alias tkwma  'tkmedit \!:1 wm.mgz lh.white -aux T1.mgz -aux-surface rh.white -segmentation aseg.mgz $FREESURFER_HOME/FreeSurferColorLUT.txt'
     breaksw
 

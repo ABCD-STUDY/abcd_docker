@@ -12,7 +12,7 @@
 ################################################################################
 
 set cpu=`uname -m`
-set release=`cat /etc/redhat-release`
+#set release=`cat /etc/redhat-release`
 
 ################################################################################
 ### Default pubsw location

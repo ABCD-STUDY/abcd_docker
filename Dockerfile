@@ -10,7 +10,7 @@
 
 # Start with debian
 FROM debian:bullseye-slim
-MAINTAINER Feng Xue <xfgavin@gmail.com>
+#MAINTAINER Feng Xue <xfgavin@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -25,7 +25,11 @@ RUN mkdir -p /usr/pubsw/packages/MMPS && cd /usr/pubsw/packages/MMPS && tar -xvf
 
 RUN /tmp/abcddocker_installer.sh 254
 
+#
 # Install matlab inside the container
+# The R2021b_install_folder.tar has been downloaded using the Matlab
+# installer application. Set "advanced" and "download only" to get this (large) folder.
+#
 RUN mkdir -p /usr/pubsw/packages/matlab
 COPY network.lic /usr/pubsw/packages/matlab/
 COPY R2021b_install_folder.tar /tmp
@@ -50,10 +54,6 @@ RUN mkdir -p /usr/pubsw/packages/MMPS/atlases \
     && cd /usr/pubsw/packages/MMPS/atlases \
     && tar -xvf /tmp/atlases.2020.10.14.tar \
     && rm -rf /tmp/atlases.2020.10.14.tar
-
-
-
-#RUN apt update && apt-get install -qq tcsh
 
 COPY usr_pubsw_bin.zip /tmp
 RUN cd /usr/pubsw \
