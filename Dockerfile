@@ -61,7 +61,11 @@ RUN cd /usr/pubsw \
     && rm -rf /tmp/usr_pubsw_bin.zip
 
 # replace some of the bin files with our copies
-#COPY pubsw_bin/SetUpFreeSurfer.csh /usr/pubsw/bin/
+COPY pubsw_bin/SetUpFreeSurfer.csh /usr/pubsw/bin/
+COPY pubsw_bin/SetUpAFNI.csh /usr/pubsw/bin/
+COPY pubsw_bin/SetUpFSL.csh /usr/pubsw/bin/
+COPY pubsw_bin/SetUpMMPS.csh /usr/pubsw/bin/
+COPY pubsw_bin/SetUpMatlab.csh /usr/pubsw/bin/
 
 COPY mmps_home.tar.gz /tmp
 RUN cd /tmp/ \
@@ -74,7 +78,7 @@ RUN cd /tmp/ \
     && chown -R MMPS /home/MMPS \
     && rm -rf /tmp/mmps_home
 
-#COPY cshrc /home/MMPS/.cshrc
+COPY cshrc /home/MMPS/.cshrc
 RUN chown MMPS /home/MMPS/.cshrc
 
 ENV NAME "ABCD Processing Pipeline based on MMPS V254"
