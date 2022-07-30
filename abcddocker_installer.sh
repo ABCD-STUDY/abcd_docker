@@ -55,7 +55,7 @@ mkdir -p /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/bin
 echo "**********************************************"
 echo " Create an MMPS user account with tcsh        "
 echo "**********************************************"
-useradd -s /usr/bin/tcsh -d /home/MMPS MMPS
+useradd -s /bin/tcsh -d /home/MMPS MMPS
 
 
 date
