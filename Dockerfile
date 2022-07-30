@@ -79,7 +79,7 @@ RUN cd /tmp/ \
     && rm -rf /tmp/mmps_home
 
 COPY cshrc /home/MMPS/.cshrc
-RUN chown MMPS /home/MMPS/.cshrc
+RUN chown MMPS:MMPS /home/MMPS/.cshrc
 
 ENV NAME "ABCD Processing Pipeline based on MMPS V254"
 ENV VER "254_2022"
@@ -92,5 +92,6 @@ ENV HOME "/home/MMPS"
 #############################################################################
 USER MMPS
 WORKDIR /home/MMPS
+CMD /bin/tcsh -l
 #ENTRYPOINT ["/usr/pubsw/packages/MMPS/MMPS_254/sh/abcd_init.sh"]
 ENV DEBIAN_FRONTEND teletype
