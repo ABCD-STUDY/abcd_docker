@@ -9,7 +9,7 @@
 #   docker build --no-cache --build-arg fileInstallationKey=12345  -t abcd:254 -f Dockerfile .
 
 # Start with debian
-FROM debian:bullseye-slim
+FROM --platform=amd64 debian:bullseye-slim
 #MAINTAINER Feng Xue <xfgavin@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -18,7 +18,7 @@ ENV DEBIAN_FRONTEND noninteractive
 #   --build-arg fileInstallationKey=12345-12323-.....
 ARG fileInstallationKey
 
-ADD abcddocker_installer.sh /tmp
+COPY abcddocker_installer.sh /tmp
 COPY fslinstaller.py /tmp
 COPY MMPS_254.tar /tmp
 RUN mkdir -p /usr/pubsw/packages/MMPS && cd /usr/pubsw/packages/MMPS && tar -xvf /tmp/MMPS_254.tar
