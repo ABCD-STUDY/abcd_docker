@@ -72,6 +72,7 @@ RUN cd /tmp/ \
     && gunzip mmps_home.tar.gz \
     && tar xvf /tmp/mmps_home.tar \
     && mkdir -p /home/MMPS \
+    && mkdir -p /home/MMPS/matlab/ \
     && cd /home/MMPS \
     && mv /tmp/mmps_home/* . \
     && mv /tmp/mmps_home/.cshrc . \
@@ -80,6 +81,8 @@ RUN cd /tmp/ \
 
 COPY cshrc /home/MMPS/.cshrc
 RUN chown MMPS:MMPS /home/MMPS/.cshrc
+COPY startup.m /home/MMPS/matlab/startup.m
+COPY startup_MMPS.m /usr/pubsw/packages/MMPS/startup_MMPS.m
 
 ENV NAME "ABCD Processing Pipeline based on MMPS V254"
 ENV VER "254_2022"

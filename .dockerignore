@@ -11,3 +11,5 @@
 !FreeSurferSetup.csh
 !R2021b_install_folder.tar
 !pubsw_bin
+!startup.m
+!startup_MMPS.m
