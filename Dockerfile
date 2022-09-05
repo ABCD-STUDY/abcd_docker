@@ -20,8 +20,8 @@ ARG fileInstallationKey
 
 COPY abcddocker_installer.sh /tmp
 COPY fslinstaller.py /tmp
-COPY MMPS_254.tar /tmp
-RUN mkdir -p /usr/pubsw/packages/MMPS && cd /usr/pubsw/packages/MMPS && tar -xvf /tmp/MMPS_254.tar
+COPY MMPS_254.tgz /tmp
+RUN mkdir -p /usr/pubsw/packages/MMPS && cd /usr/pubsw/packages/MMPS && tar -xzvf /tmp/MMPS_254.tgz
 
 RUN /tmp/abcddocker_installer.sh 254
 

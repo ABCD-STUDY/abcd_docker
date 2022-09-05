@@ -52,6 +52,9 @@ mkdir -p /usr/pubsw/packages/mcr
 mkdir -p /usr/pubsw/packages/dtitk
 mkdir -p /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/bin
 
+# We need python 2.7 as well, not just python3
+apt-get -qq install python
+
 echo "**********************************************"
 echo " Create an MMPS user account with tcsh        "
 echo "**********************************************"
