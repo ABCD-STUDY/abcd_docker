@@ -56,8 +56,8 @@ RUN mkdir -p /usr/pubsw/packages/MMPS/atlases \
     && rm -rf /tmp/atlases.2020.10.14.tar
 
 COPY usr_pubsw_packages_opt.tar /tmp
-RUN mkdir -p /usr/pubsw/packages/MMPS/opt/ \
-    && cd /usr/pubsw/packages/MMPS/opt/ \
+RUN mkdir -p /usr/pubsw/packages/opt/ \
+    && cd /usr/pubsw/packages/opt/ \
     && tar -xvf /tmp/usr_pubsw_packages_opt.tar \
     && rm -rf /tmp/usr_pubsw_packages_opt.tar
 
