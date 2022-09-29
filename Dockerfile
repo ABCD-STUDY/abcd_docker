@@ -79,6 +79,7 @@ RUN cd /tmp/ \
     && tar xvf /tmp/mmps_home.tar \
     && mkdir -p /home/MMPS \
     && mkdir -p /home/MMPS/matlab/ \
+    && mkdir -p /home/MMPS/batchdirs \
     && cd /home/MMPS \
     && mv /tmp/mmps_home/* . \
     && mv /tmp/mmps_home/.cshrc . \
