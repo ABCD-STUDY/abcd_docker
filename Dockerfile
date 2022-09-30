@@ -94,7 +94,7 @@ COPY startup_MMPS.m /usr/pubsw/packages/MMPS/startup_MMPS.m
 COPY runProc.m /home/MMPS/matlab/
 
 # Setup the virtual X server
-RUN apt -qq install xvfb
+# RUN apt -qq install xvfb
 
 
 ENV NAME "ABCD Processing Pipeline based on MMPS V254"
