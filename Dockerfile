@@ -91,6 +91,8 @@ RUN chown MMPS:MMPS /home/MMPS/.cshrc
 COPY startup.m /home/MMPS/matlab/startup.m
 COPY startup_MMPS.m /usr/pubsw/packages/MMPS/startup_MMPS.m
 
+COPY runProc.m /home/MMPS/matlab/
+
 ENV NAME "ABCD Processing Pipeline based on MMPS V254"
 ENV VER "254_2022"
 ENV MMPSVER "254"
