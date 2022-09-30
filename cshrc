@@ -105,3 +105,8 @@ setenv GOPATH ${HOME}/src/go
 setenv DTITK_ROOT /usr/pubsw/packages/dtitk/dtitk-2.3.1-Linux-x86_64
 setenv PATH ${PATH}:${DTITK_ROOT}/bin:${DTITK_ROOT}/utilities:${DTITK_ROOT}/scripts:${GOPATH}/bin
 
+setenv DISPLAY :1.0
+
+# start fake X server in the background
+/etc/init.d/xfs start
+/usr/bin/Xvfb :1 -screen 0 1024x768x16 >& /tmp/Xvfb_logfile.log &
