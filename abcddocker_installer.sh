@@ -24,7 +24,7 @@ echo "*Installing prerequisites                    *"
 echo "**********************************************"
 apt-get -qq update >/dev/null 2>&1
 apt-get install -qq --no-install-recommends --allow-unauthenticated apt-utils >/dev/null 2>&1
-apt-get -qq --allow-unauthenticated install tar aria2 libgomp1 graphicsmagick-libmagick-dev-compat libmotif-dev libxpm-dev libglu1-mesa-dev libglw1-mesa-dev libgsl-dev libxt-dev libxrandr2 libxcursor-dev libxinerama-dev libxft-dev libxmu-dev libxi-dev libglu1-mesa bc bzip2 dc file libsm6 tcsh unzip libx11-6 libxext6 libgomp1 libexpat1 libgl1-mesa-glx libxt6 jq curl libstdc++6 binutils lrzip dcmtk python2 python3 python3-pip pigz libncurses5 xvfb >/dev/null
+apt-get -qq --allow-unauthenticated install tar aria2 libgomp1 graphicsmagick-libmagick-dev-compat libmotif-dev libxpm-dev libglu1-mesa-dev libglw1-mesa-dev libgsl-dev libxt-dev libxrandr2 libxcursor-dev libxinerama-dev libxft-dev libxmu-dev libxi-dev libglu1-mesa bc bzip2 dc file libsm6 tcsh unzip libx11-6 libxext6 libgomp1 libexpat1 libgl1-mesa-glx libxt6 jq curl libstdc++6 binutils lrzip dcmtk python2 python3 python3-pip pigz libncurses5 xvfb man-db x11-apps >/dev/null
 # Just during development we would need these... 
 apt-get -qq install nano vim
 pip3 -q --no-cache-dir install pydicom dicom pandas matplotlib scipy
