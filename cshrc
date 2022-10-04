@@ -108,5 +108,5 @@ setenv PATH ${PATH}:${DTITK_ROOT}/bin:${DTITK_ROOT}/utilities:${DTITK_ROOT}/scri
 setenv DISPLAY :1.0
 
 # start fake X server in the background
-/etc/init.d/xfs start
+/etc/init.d/xfstt start
 /usr/bin/Xvfb :1 -screen 0 1024x768x16 >& /tmp/Xvfb_logfile.log &
