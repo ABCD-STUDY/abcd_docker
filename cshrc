@@ -100,7 +100,7 @@ setenv GPG_TTY `tty`
 #setenv GOROOT ${HOME}/src/go
 setenv GOPATH ${HOME}/src/go
 
-setenv MATLAB_JAVA /usr/pubsw/packages/matlab/R2011a/sys/java/jre/glnxa64/jre
+setenv MATLAB_JAVA /usr/pubsw/packages/matlab/R2021b/sys/java/jre/glnxa64/jre/
 
 setenv DTITK_ROOT /usr/pubsw/packages/dtitk/dtitk-2.3.1-Linux-x86_64
 setenv PATH ${PATH}:${DTITK_ROOT}/bin:${DTITK_ROOT}/utilities:${DTITK_ROOT}/scripts:${GOPATH}/bin
