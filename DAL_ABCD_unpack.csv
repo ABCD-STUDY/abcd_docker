@@ -1,0 +1,7 @@
+“command”,“batchname”,“parms”,“type”,“cluster”
+“MMIL_Update_VisitInfo”,,“parms.SubjID_pattern = ‘(?<SubjID>^[^_]+)_(?<VisitNumber>\d+)’“,”matlab”,
+“MMIL_Process_Exams”,“unpack”,“parms.STRUCTflag = 0;
+parms.BOLDflag = 0;
+parms.DTIflag = 0;
+parms.DTI_ATLflag = 0;“,”matlab”,“”
+runUnpack,,,matlab,

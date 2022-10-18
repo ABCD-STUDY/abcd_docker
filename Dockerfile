@@ -92,6 +92,7 @@ COPY startup.m /home/MMPS/matlab/startup.m
 COPY startup_MMPS.m /usr/pubsw/packages/MMPS/startup_MMPS.m
 
 COPY runProc.m /home/MMPS/matlab/
+COPY runUnpack.m /home/MMPS/matlab/
 
 # Setup the virtual X server
 # RUN apt -qq install xvfb
