@@ -93,6 +93,7 @@ COPY startup_MMPS.m /usr/pubsw/packages/MMPS/startup_MMPS.m
 
 COPY runProc.m /home/MMPS/matlab/
 COPY runUnpack.m /home/MMPS/matlab/
+COPY DAL_ABCD_unpack.csv /home/MMPS/ProjInfo/DAL_ABCD/
 
 # Setup the virtual X server
 # RUN apt -qq install xvfb
