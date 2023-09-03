@@ -1,0 +1,15 @@
+set rootdir = /usr/share/X11/fonts
+set dirlist = (100dpi 75dpi TTF Type1 misc)
+
+# restore default font path
+/usr/bin/xset fp default
+
+# append font path
+foreach dir ($dirlist)
+  set fontdir = $rootdir'/'$dir
+  if (-e $fontdir) then
+    /usr/bin/xset fp+ $fontdir
+  endif
+end
+
+/usr/bin/xset fp rehash

@@ -1,0 +1,64 @@
+SeriesType,matchi Manufacturer,match SeriesDescription,matchi SeriesDescription,match SequenceName,match ScanningSequence,match SequenceLabel,matchi SequenceLabel,exact SequenceVariant,match ImageType,exact MRAcquisitionType,exact magnitude_flag,match rfrxcoiltype,match ScanOptions,expr FlipAngle,exact InversionTime,expr InversionTime,expr RepetitionTime,exact ndiffdirs,exact nimgs,expr nimgs,expr SliceThickness,exact Rows,exact Columns,exact NumberOfPhaseEncodingSteps,expr NumberOfPhaseEncodingSteps,exact pepolar,exact pe_rev_flag,exact pe_for_flag,expr pe_extra_val,expr InPlaneRot,expr tensor_fnum,set pepolar,set nb0,set bval,set ndiffdirs,set gradwarpinfo_dot_unwarpflag
+MPR,GE,,,EFGRE3D,,,,,,,1,,,,,>0,,,,,,,,,,,,,,,,,,,,
+XetaT2,GE,,,3DFSE,RM,3dfse,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+XetaT2,GE,,,3DFSE,RM,Cube,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+XetaT2,GE,,,3DFSE,SE,Cube,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+XetaT2,GE,,,3DFSE,RM,3dfse_promo,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+DTI_flex,GE,,,EPI2,EP\\RM,muxepi2,,,,,,,,,,,,,,,,,,,,,,,,,>0,0,1,,,0
+DTI_rev,GE,,rev,EPI2,EP\\RM,muxepi2,,,,,,,,,,,,,,,,,,,,,,,,,,1,1,,0,0
+DTI_ipp,GE,,Diffusion Field,EPI,EP\\RM,epi_pepolar,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0
+DTI_rev,GE,,Diffusion[\s_]Field,EPI2,EP\\RM,muxepi2,,,,,,,,,,,,,,,,,,,,,,,,,,1,1,,,0
+BOLD_SE,GE,,,EPI,EP\\SE,epi,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0
+BOLD_pep,GE,,,EPI,EP\\RM,epi_pepolar,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0
+BOLD_bu,GE,,,EPI,EP\\RM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0
+BOLD_bu,GE,,,EPI,EP\\GR,epi,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0
+MPR,SIEMENS,,,tfl3d1,,,,,ORIGINAL\\PRIMARY\\M\\ND\\NORM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+JUNK,SIEMENS,,,tfl3d1,,,,,,,1,,,,,,,,,,,,,,,,,,,,,,,,,
+JUNK,SIEMENS,,,tfl3d1,,,,,ORIGINAL\\PRIMARY\\M\\DIS2D,,,,,,,,,,,,,,,,,,,,,,,,,,,
+XetaT2,SIEMENS,,,spc,,,,,ORIGINAL\\PRIMARY\\M\\ND\\NORM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+JUNK,SIEMENS,,,spc,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+BOLD_SE,SIEMENS,fMRI_DistortionMap,,epse2d1,EP,,,,,,,,,,,,,,,,,,,,,0,,,,,,,1,,0,0
+BOLD_SE,SIEMENS,fMRI_DistortionMap,,epse2d1,EP,,,,,,,,,,,,,,,,,,,,,1,,,,,,,1,,0,0
+BOLD_SE,SIEMENS,fMRI_DistortionMap_PA,,epse2d1,EP,,,,,,,,,,,,,,,,,,,,,,,,,,,0,1,,0,0
+BOLD_SE,SIEMENS,fMRI_DistortionMap_AP,,epse2d1,EP,,,,,,,,,,,,,,,,,,,,,,,,,,,1,1,,0,0
+DTI_rev,SIEMENS,dMRI_DistortionMap,,ep_b0,,,,,,,,,,,,,,,,,,,,,,1,,,,,,,1,,,
+DTI,SIEMENS,dMRI_DistortionMap,,ep_b0,,,,,,,,,,,,,,,,,,,,,,0,,,,,,,1,,,
+DTI_rev,SIEMENS,dMRI_DistortionMap_AP,,ep_b0,,,,,,,,,,,,,,,,,,,,,,,,,,,,1,1,,,
+DTI,SIEMENS,dMRI_DistortionMap_PA,,ep_b0,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,1,,,
+DTI_rev,SIEMENS,,,epse2d1_96,,,,,,,,,,,,,,,,,,,,,,,,,> 10,,,1,1,,,
+DTI,SIEMENS,,,epse2d1_96,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,1,,,
+DTI_rev,SIEMENS,,,ep_b0,,,,,,,,,,,,,,,,,,,,,,,,,> 10,,,1,1,,,
+DTI,SIEMENS,,,ep_b0,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,1,,,
+DTI_rev,SIEMENS,,,ep_b5,,,,,,,,,,,,,,,,,,,,,,,,,> 10,,,1,1,,,
+DTI,SIEMENS,,,ep_b5,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,1,,,
+BOLD_SE,SIEMENS,,,epse2d1,EP,,,SK,,,,,,,,,,,,,,,,,,,1,,,,,1,1,,0,0
+BOLD_SE,SIEMENS,,,epse2d1,EP,,,SK,,,,,,,,,,,,,,,,,,,,,> 4,,,1,1,,0,0
+BOLD_SE,SIEMENS,,,epse2d1,EP,,,SK,,,,,,,,,,,,,,,,,,,,,,,,0,1,,0,0
+BOLD_SE,SIEMENS,,,epse2d1,EP,,,SK\SP,,,,,,,,,,,,,,,,,,,,,> 4,,,1,1,,0,0
+BOLD_SE,SIEMENS,,,epse2d1,EP,,,SK\SP,,,,,,,,,,,,,,,,,,,,,,,,0,1,,0,0
+BOLD_td,SIEMENS,,,epfid2d1,EP,,,SK\SS,,,,,,,,,,,,,,,,,,,1,,,,,1,,,,0
+BOLD_bu,SIEMENS,,,epfid2d1,EP,,,SK\SS,,,,,,,,,,,,,,,,,,,,,,,,0,,,,0
+BOLD_td,SIEMENS,,,epfSM2d1,EP,,,SK,,,,,,,,,,,,,,,,,,,1,,,,,1,,,,0
+BOLD_bu,SIEMENS,,,epfSM2d1,EP,,,SK,,,,,,,,,,,,,,,,,,,,,,,,0,,,,0
+BOLD_td,SIEMENS,,,epfid2d1_90,EP,,,SK,,,,,,,,,,,,,,,,,,,1,,,,,1,,,,0
+BOLD_bu,SIEMENS,,,epfid2d1_90,EP,,,SK,,,,,,,,,,,,,,,,,,,,,,,,0,,,,0
+JUNK,PHILIPS,LOC,,TFE,GR,,,MP,,3D,,,,,,,,,,,<= 1.5,,,,,,,,,,,,,,,
+MPR,PHILIPS,,,TFE,GR,,,MP,,3D,,,,,,,,,,,<= 1.5,,,,,,,,,,,,,,,
+MPR,PHILIPS,,,TFE,,,,,,3D,,,,,,,,,,,<= 1.5,,,,,,,,,,,,,,,
+XetaT2,PHILIPS,,,TSE,SE,,,SK,,3D,,,,,,,,,,,,,,,,,,,,,,,,,,
+XetaT2,PHILIPS,,,TSE,,,,,,3D,,,,,,,,,,,,,,,,,,,,,,,,,,
+DTI_rev,PHILIPS,DTI Fieldmap A,,SEEPI,SE,,,SK,,,,,,,,,,,,,,,,,>= 95,,,,,,,1,,,,
+DTI_rev,PHILIPS,DTI Fieldmap A,,DWISE,SE,,,SK,,,,,,,,,,,,,,,,,>= 95,,,,,,,1,,,,
+DTI_rev,PHILIPS,,rev,DWISE,SE,,,SK,,,,,,,,,,,,,,,,,>= 95,,,,,,,1,,,,
+DTI_rev,PHILIPS,,rev,DWISE,,,,,,,,,,,,,,,,,,,,,>= 95,,,,,,,1,,,,
+DTI,PHILIPS,DTI Fieldmap P,,SEEPI,SE,,,SK,,,,,,,,,,,,,,,,,>= 95,,,,,,,0,,,,
+DTI,PHILIPS,DTI Fieldmap P,,DWISE,SE,,,SK,,,,,,,,,,,,,,,,,>= 95,,,,,,,0,,,,
+DTI,PHILIPS,,,DWISE,SE,,,SK,,,,,,,,,,,,,,,,,>= 95,,,,,,,0,,,,
+DTI,PHILIPS,,,DWISE,,,,,,,,,,,,,,,,,,,,,>= 95,,,,,,,0,,,,
+BOLD_SE,PHILIPS,map A,fMRI,SEEPI,SE,,,SK,,,,,,,,,,,,,,,,,,,,,,,,0,,,,
+BOLD_SE,PHILIPS,map P,fMRI,SEEPI,SE,,,SK,,,,,,,,,,,,,,,,,,,,,,,,1,,,,
+BOLD_SE,PHILIPS,SB_REF,PA,FEEPI,GR,,,SK,,,,,,,,,,,,,,,,,,,,,,,,0,,,,
+BOLD_SE,PHILIPS,SB_REF,AP,FEEPI,GR,,,SK,,,,,,,,,,,,,,,,,,,,,,,,1,,,,
+BOLD_bu,PHILIPS,fMRI,PA,FEEPI,GR,,,SK,,,,,,,,,,,,,,,,,,,,,,,,0,,,,
+BOLD_td,PHILIPS,fMRI,AP,FEEPI,GR,,,SK,,,,,,,,,,,,,,,,,,,,,,,,1,,,,
+BOLD_bu,PHILIPS,fMRI,,FEEPI,GR,,,SK,,,,,,,,,,,,,,,,,,,,,,,,0,,,,

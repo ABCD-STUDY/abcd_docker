@@ -1,0 +1,27 @@
+command,batchname,parms,type,cluster
+MMIL_Process_Exams,proc_dMRI,"parms.procstep = 1;
+parms.STRUCTflag = 0;
+parms.BOLDflag = 0;
+parms.DTIflag = 1;
+parms.DTI_ATLflag = 0;
+parms.DTI_flex_flag = 1;
+parms.DTI_min_ndirs = 10;
+parms.DTI_min_bval = 2000;
+parms.DTI_max_bval = 1100;
+parms.DTI_DT_outfix = [];
+parms.DTI_DT_nonlin_flag = 0;
+parms.DTI_calcRSI_flag = 1;
+parms.DTI_RSI_outfix = 'res_hind';
+parms.DTI_RSI_lambda = 0.1;
+parms.DTI_RSI_iso_free_flag = 0;
+parms.DTI_RSI_iso_hindered_flag = 0;
+parms.DTI_RSI_iso_restricted_flag = 0;
+parms.DTI_RSI_ADC_free = 3e-3;
+parms.DTI_RSI_ADC_hindered = 1.5e-3;
+parms.DTI_RSI_ADC_long = 1e-3;
+parms.DTI_RSI_ADC_trans_min = 0;
+parms.DTI_RSI_ADC_trans_max = 0.9e-3;
+parms.DTI_RSI_num_ADC_trans = 2;
+parms.DTI_RSI_SH_order = 4;
+parms.DTI_export_flag = 2;",matlab,
+runProc,,,matlab,

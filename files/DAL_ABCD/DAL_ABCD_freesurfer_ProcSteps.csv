@@ -1,0 +1,4 @@
+command,batchname,parms,type,cluster
+MMIL_Freesurfer_Recon_Exams,fsurf,"parms.FS_rescale_orig_flag = 0;
+parms.FS_nu_flag = 0;parms.FS_full_recon_flag = 1;parms.FS_followup_flag = 1;parms.FS_T2_flag = 0;",matlab,""
+runProcFSurf,,,matlab, 

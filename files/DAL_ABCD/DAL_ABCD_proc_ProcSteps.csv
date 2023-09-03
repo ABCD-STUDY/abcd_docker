@@ -1,0 +1,19 @@
+"command","batchname","parms","type","cluster"
+"MMIL_Process_Exams","proc","parms.procstep = 0;
+parms.preprocflag = 0;
+parms.STRUCTflag = 1;
+parms.BOLDflag = 0;
+parms.DTIflag = 0;","matlab",
+runProc,,,matlab,
+"MMIL_Process_Exams","proc","parms.procstep = 0;
+parms.preprocflag = 0;
+parms.STRUCTflag = 0;
+parms.BOLDflag = 0;
+parms.DTIflag = 1;","matlab",
+runProc,,,matlab,
+"MMIL_Process_Exams","proc","parms.procstep = 0;
+parms.preprocflag = 0;
+parms.STRUCTflag = 0;
+parms.BOLDflag = 1;
+parms.DTIflag = 0;","matlab",
+runProc,,,matlab,

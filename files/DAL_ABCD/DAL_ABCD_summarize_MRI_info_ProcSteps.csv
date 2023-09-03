@@ -1,0 +1,6 @@
+command,batchname,parms,type,cluster
+ABCD_Summarize_MRI_info_Exams,summarize_MRI_info,"parms.outstem = 'MRI_info';
+parms.continfo_flag = 1;
+parms.info_tags = {'Manufacturer','ManufacturersModelName','DeviceSerialNumber','MagneticFieldStrength','SoftwareVersion','StudyDate'};
+parms.verbose = 2;
+parms.forceflag = 1;",matlab,mmps_engine

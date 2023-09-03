@@ -1,0 +1,79 @@
+command,batchname,parms,type,cluster
+ABCD_Analyze_taskBOLD_Exams,analyze_taskBOLD_MID_sm,"parms.tasknames = 'MID';
+parms.stim_times_flag = 3;
+parms.stim_times_model = 'SPMG';
+parms.force_eprime_flag = 0;
+parms.eprime_indir = [getenv('HOME') '/data/aux_incoming'];
+parms.concat_flag = 0;
+parms.ico_flag = 1;
+parms.ico_order = 5;
+parms.ico_presmooth = [0 16 256 1000];
+parms.ico_postsmooth = 0;
+parms.ico_trunc_flag = 1;
+parms.mni_flag = 1;
+parms.vox_flag = 1;
+parms.surf_flag = 1;
+parms.roi_flag = 1;
+parms.outliers_flag = 1;
+parms.outliers_thresh = 5;
+parms.aparc_infix = {'aparc','aparc.a2009s'};
+parms.aseg_flag = 1;
+parms.aparc_flag = 1;
+parms.fparc_flag = 1;
+parms.fnames_fparc = {...
+  [getenv('HOME') '/ProjInfo/network_gordon/lh.gordon.annot']...
+  [getenv('HOME') '/ProjInfo/network_gordon/rh.gordon.annot']...
+};
+parms.forceflag = 0;",matlab,mmps_engine
+ABCD_Analyze_taskBOLD_Exams,analyze_taskBOLD_nBack_sm,"parms.tasknames = 'nBack';
+parms.stim_times_flag = 2;
+parms.stim_times_model = 'SPMG';
+parms.force_eprime_flag = 0;
+parms.eprime_indir = [getenv('HOME') '/data/aux_incoming'];
+parms.concat_flag = 0;
+parms.ico_flag = 1;
+parms.ico_order = 5;
+parms.ico_presmooth = [0 16 256 1000];
+parms.ico_postsmooth = 0;
+parms.ico_trunc_flag = 1;
+parms.mni_flag = 1;
+parms.vox_flag = 1;
+parms.surf_flag = 1;
+parms.roi_flag = 1;
+parms.outliers_flag = 1;
+parms.outliers_thresh = 5;
+parms.aparc_infix = {'aparc','aparc.a2009s'};
+parms.aseg_flag = 1;
+parms.aparc_flag = 1;
+parms.fparc_flag = 1;
+parms.fnames_fparc = {...
+  [getenv('HOME') '/ProjInfo/network_gordon/lh.gordon.annot']...
+  [getenv('HOME') '/ProjInfo/network_gordon/rh.gordon.annot']...
+};
+parms.forceflag = 0;",matlab,mmps_engine
+ABCD_Analyze_taskBOLD_Exams,analyze_taskBOLD_SST_sm,"parms.tasknames = 'SST';
+parms.stim_times_flag = 3;
+parms.stim_times_model = 'SPMG';
+parms.force_eprime_flag = 0;
+parms.eprime_indir = [getenv('HOME') '/data/aux_incoming'];
+parms.concat_flag = 0;
+parms.ico_flag = 1;
+parms.ico_order = 5;
+parms.ico_presmooth = [0 16 256 1000];
+parms.ico_postsmooth = 0;
+parms.ico_trunc_flag = 1;
+parms.mni_flag = 1;
+parms.vox_flag = 1;
+parms.surf_flag = 1;
+parms.roi_flag = 1;
+parms.outliers_flag = 1;
+parms.outliers_thresh = 5;
+parms.aparc_infix = {'aparc','aparc.a2009s'};
+parms.aseg_flag = 1;
+parms.aparc_flag = 1;
+parms.fparc_flag = 1;
+parms.fnames_fparc = {...
+  [getenv('HOME') '/ProjInfo/network_gordon/lh.gordon.annot']...
+  [getenv('HOME') '/ProjInfo/network_gordon/rh.gordon.annot']...
+};
+parms.forceflag = 0;",matlab,mmps_engine

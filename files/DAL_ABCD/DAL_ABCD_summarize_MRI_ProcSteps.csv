@@ -1,0 +1,17 @@
+command,batchname,parms,type,cluster
+ABCD_Summarize_MRI_Exams,summarize_MRI,"parms.outstem = 'MRI';
+parms.aparc_infix = {'aparc','aparc.a2009s'};
+parms.thick_flag = 1;
+parms.sulc_flag = 1;
+parms.area_flag = 1;
+parms.cortproc_flag = 1;
+parms.subvol_flag = 1;
+parms.subproc_flag = 1;
+parms.proc_outputlist = {'T1w','T2w'};
+parms.concat_flag = 1;
+parms.continfo_flag = 0;
+parms.subjinfo_flag = 0;
+parms.qcflag = 0;
+parms.info_tags = [];
+parms.verbose = 1;
+parms.forceflag = 1;",matlab,mmps_engine

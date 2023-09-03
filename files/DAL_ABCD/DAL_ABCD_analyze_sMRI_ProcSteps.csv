@@ -1,0 +1,10 @@
+"command","batchname","parms","type","cluster"
+"MMIL_Analyze_MRI_Exams","analyze_sMRI_sm","parms.aseg_roigroups_flag = 1;
+parms.proc_inputlist = {'MPR_res','T2w_res'};
+parms.proc_outputlist = {'T1w','T2w'};
+parms.aparc_infix = {'aparc','aparc.a2009s'};
+parms.sphsmoothsteps = [0 16 256 1000];
+parms.check_stale_flag = 1;
+parms.qcflag = 0;
+parms.verbose = 1;
+parms.forceflag = 0;","matlab","mmps_engine"

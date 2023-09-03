@@ -1,0 +1,32 @@
+"command","batchname","parms","type","cluster"
+"ABCD_Analyze_rsBOLD_Exams","analyze_rsBOLD","parms.outdir = 'rsBOLD_analysis';
+parms.outstem = 'rsBOLD';
+parms.min_numTRs = 100;
+parms.max_nscans = 12;
+parms.mask_flag = 0;
+parms.mask_thresh = 0.7;
+parms.aseg_flag = 1;
+parms.aparc_flag = 1;
+parms.aparc_infix = {'aparc','aparc.a2009s'};
+parms.fparc_flag = 1;
+parms.ico_flag = 0;
+parms.ico_order = 7;
+parms.infix = 'corr_resBOLD';
+parms.mc_flag = 2;
+parms.wm_flag = 2;
+parms.csf_flag = 2;
+parms.brain_flag = 2;
+parms.roi_outfix = 'aparc2_gordon';
+parms.fnames_fparc = {...
+  [getenv('HOME') '/ProjInfo/network_gordon/lh.gordon.annot']...
+  [getenv('HOME') '/ProjInfo/network_gordon/rh.gordon.annot']...
+};
+parms.corr_outfix = 'networks';
+parms.corr_seed_roinames = [];
+parms.corr_roi_flag = 1;
+parms.corr_roi_ico_flag = 0;
+parms.corr_roi_ico_maps_flag = 0;
+parms.corr_ico_flag = 0;
+parms.censor_thresh = 0.2;
+parms.contig_thresh = 5;
+parms.verbose = 2;","matlab","mmps_engine"
