@@ -43,7 +43,7 @@ else:
 #---------------------------------------------------------------------------------------------------------------------
 # Find files under path, read each file's header (if file is DICOM) and construct table with this information, one row per file
 
-Files = pd.DataFrame()
+Files = [] #pd.DataFrame()
 # j = 0    # Used only during Tests
 
 for path, dirnames, fnames in os.walk( fdir, followlinks=True ):
@@ -121,10 +121,14 @@ for path, dirnames, fnames in os.walk( fdir, followlinks=True ):
                                  'EchoTime': this_EchoTime,  'errmsg': msg,  'File1_NameFull': File1_NameFull },  index = [i] )
             #Files = Files.append( rec )
             #print(Files.shape)
-            Files = pd.concat([Files, rec], axis = 0, ignore_index=True)
-            #print(Files.shape)
+            # append to a list
+            Files.append(rec)
+            
+# now concat all frames
+Files = pd.concat(Files, axis = 0, ignore_index=True)
+#print(Files.shape)
 
-        # end for fname in fnames
+# end for fname in fnames
 
 Files = Files[['i', 'FileName', 'SeriesNumber', 'StudyInstanceUID', 'SeriesInstanceUID', 'InstanceNumber', 'EchoTime', 'errmsg', 'File1_NameFull']]
 Files = Files.sort_values( by=['FileName', 'SeriesInstanceUID'] )
