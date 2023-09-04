@@ -70,7 +70,7 @@ endif
 ### specific setup file.
 source $PUBSH/bin/SetUpFreeSurfer.csh 711
 source $PUBSH/bin/SetUpMatlab.csh  R2021b
-source $PUBSH/bin/SetUpAFNI.csh
+source $PUBSH/bin/SetUpAFNI.csh 2010_10_19_1028
 source $PUBSW/bin/SetUpFSL.csh 6.0.5.2-ubuntu
 source $PUBSH/bin/SetUpMMPS.csh 254
 

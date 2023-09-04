@@ -79,6 +79,8 @@ endif
 if ($cpu == "x86_64") then
   if ("${AFNI_VER}" == "LATEST") then
     setenv AFNIDIR ${PUBSW}/packages/afni/AFNI_${AFNI_VER}/linux_xorg7_64
+  else if ("${AFNI_VER}" == "2010_10_19_1028") then
+    setenv AFNIDIR ${PUBSW}/packages/afni/AFNI_${AFNI_VER}
   else if ("${AFNI_VER}" == "2017_10_24") then
     setenv AFNIDIR ${PUBSW}/packages/afni/AFNI_${AFNI_VER}/linux_xorg7_64
   else if ("${AFNI_VER}" == "2021.01.02") then
