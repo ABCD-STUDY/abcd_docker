@@ -64,7 +64,7 @@ endif
 ### specific setup file.
 source $PUBSH/bin/SetUpFreeSurfer.csh 530
 source $PUBSH/bin/SetUpMatlab.csh R2011a
-source $PUBSH/bin/SetUpAFNI.csh
+source $PUBSH/bin/SetUpAFNI.csh 2010_10_19_1028
 source $PUBSH/bin/SetUpFSL.csh
 source $PUBSH/bin/SetUpMMPS.csh 235
 
