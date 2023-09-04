@@ -74,7 +74,9 @@ for path, dirnames, fnames in os.walk( fdir, followlinks=True ):
             fname_full = path + '/' + fname
 
             try:
-                ds = dicom.dcmread(fname_full)
+                #ds = dicom.dcmread(fname_full)
+                # only read the tags we absolutely need, may speed up reading the files
+                ds = dicom.dcmread(fname_full, specific_tags=[("0x0020","0x000e"),("0x0020","0x000d"),("0x0020","0x0013"),("0x0018","0x0081"),("0x0020","0x0011")])
             except:
                 # File is not a DICOM data set
                 num_files_not_dicom += 1
